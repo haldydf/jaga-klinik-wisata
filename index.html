@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jaga Kuta">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0fa3a3">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<title>Survival Guide Jaga Klinik Wisata Kuta Lombok</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#0fa3a3;--teal2:#d9f5f3;--coral:#ff6b6b;--sun:#ffd166;--navy:#1d3557;--bg:#f4fbfb;--card:#fff;--ink:#233;--mut:#5b6b7a;--r:20px}
+*{box-sizing:border-box}
+body{margin:0;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{padding-top:max(28px,calc(env(safe-area-inset-top) + 16px))!important;background:linear-gradient(135deg,#0fa3a3,#1d7fb5);color:#fff;padding:28px 18px 60px;position:relative;overflow:hidden}
+header h1{margin:0;font-size:clamp(26px,5vw,40px);font-weight:900;max-width:70%}
+header p{margin:6px 0 0;opacity:.95;max-width:75%}
+.badge{display:inline-block;background:rgba(255,255,255,.2);border-radius:99px;padding:4px 12px;font-weight:800;font-size:13px;margin:10px 6px 0 0}
+.mascot{position:absolute;right:6px;bottom:-4px;width:170px}
+nav{position:sticky;top:0;-webkit-overflow-scrolling:touch;z-index:5;background:#fff;box-shadow:0 2px 10px #0001;display:flex;gap:6px;overflow-x:auto;padding:10px 12px;margin-top:-30px;border-radius:20px 20px 0 0}
+nav button{flex:none;border:0;background:var(--teal2);color:var(--navy);font:800 14px Nunito;padding:9px 14px;border-radius:99px;cursor:pointer}
+nav button.on{background:var(--coral);color:#fff}
+main{max-width:1000px;margin:0 auto;padding:16px;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right));padding-bottom:max(16px,env(safe-area-inset-bottom))}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border-radius:var(--r);padding:18px;margin:14px 0;box-shadow:0 4px 14px #0001}
+h2{margin:6px 0 10px;color:var(--navy);font-weight:900}
+h3{margin:0 0 6px;color:var(--teal)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.stat{border-radius:var(--r);padding:14px;text-align:center;color:#fff;font-weight:800}
+.stat b{display:block;font-size:28px;font-weight:900}
+.s1{background:#0fa3a3}.s2{background:#ff6b6b}.s3{background:#f4a259}.s4{background:#7b6cf6}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;background:var(--teal2);border-radius:16px;padding:12px 14px 12px 54px;margin:9px 0;position:relative}
+.steps li:before{content:counter(s);position:absolute;left:12px;top:10px;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-weight:900;display:grid;place-items:center}
+.tip{background:#fff6dc;border-left:6px solid var(--sun);border-radius:12px;padding:10px 14px;margin:10px 0}
+.warn{background:#ffe7e7;border-left:6px solid var(--coral);border-radius:12px;padding:10px 14px;margin:10px 0}
+.ok{background:#e4f8ec;border-left:6px solid #2fb872;border-radius:12px;padding:10px 14px;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:var(--navy);color:#fff;text-align:left;padding:8px;position:sticky;top:0}
+td{padding:7px 8px;border-bottom:1px solid #e6eef0;vertical-align:top}
+.wrap{overflow:auto;max-height:560px;border-radius:14px;border:1px solid #e0ecee}
+input[type=search]{width:100%;padding:12px 16px;border-radius:99px;border:2px solid var(--teal);font:700 15px Nunito;margin:6px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:0;background:var(--teal2);padding:6px 12px;border-radius:99px;font:800 13px Nunito;cursor:pointer;color:var(--navy)}
+.chip.on{background:var(--teal);color:#fff}
+.pill{display:inline-block;background:var(--teal2);border-radius:99px;padding:1px 9px;font-weight:800;font-size:12px;margin:1px}
+.bar{height:14px;border-radius:99px;background:linear-gradient(90deg,#0fa3a3,#7be0d6)}
+.row{display:grid;grid-template-columns:minmax(110px,230px) 1fr 56px;gap:8px;align-items:center;margin:6px 0;font-size:14px}
+.ph{background:#eef7ff;border-radius:12px;padding:9px 12px;margin:6px 0}
+.ph b{color:var(--navy)}
+.hand{border:2px dashed var(--teal);border-radius:16px;padding:12px 14px;margin:10px 0;background:#fcffff;position:relative}
+.hand pre{white-space:pre-wrap;font:600 14px Nunito;margin:6px 0 0}
+button.copy{position:absolute;right:10px;top:10px;border:0;background:var(--coral);color:#fff;font:800 12px Nunito;padding:6px 12px;border-radius:99px;cursor:pointer}
+.mas{display:flex;gap:12px;align-items:center}
+.mas svg{flex:none;width:70px}
+.mas .bubble{background:var(--teal2);border-radius:16px;padding:10px 14px}
+.bars{display:flex;align-items:flex-end;gap:5px;height:130px;margin:8px 0 22px}
+.bars div{flex:1;background:var(--teal);border-radius:6px 6px 0 0;position:relative;min-height:2px}
+.bars div.pk{background:var(--coral)}
+.bars span{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--mut)}
+.bars b{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:10px}
+details{background:#f6fbfb;border-radius:14px;padding:10px 14px;margin:8px 0}
+summary{font-weight:900;color:var(--navy);cursor:pointer}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:24px 14px 40px}
+@media(max-width:600px){header h1,header p{max-width:100%}.mascot{width:90px;opacity:.6}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🌴 Survival Guide Jaga<br>Klinik Wisata Kuta Lombok</h1>
+  <p>Panduan praktis shift jaga di klinik yang banyak menerima turis asing: alur, kasus tersering, protokol, edukasi pasien bahasa Inggris.</p>
+  <span class="badge">Pemilik: dr. Haldy Dwi Febrian</span><span class="badge">Tanpa data pasien &amp; klinik</span>
+  <svg class="mascot" viewBox="0 0 180 130" aria-hidden="true">
+    <ellipse cx="90" cy="124" rx="70" ry="6" fill="#0003"/>
+    <circle cx="55" cy="80" r="42" fill="#8d5a3b"/><circle cx="55" cy="80" r="35" fill="#fff6e6"/>
+    <circle cx="42" cy="74" r="5" fill="#233"/><circle cx="68" cy="74" r="5" fill="#233"/><path d="M45 90q10 9 20 0" stroke="#233" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="36" cy="86" r="5" fill="#ffb3a7"/><circle cx="74" cy="86" r="5" fill="#ffb3a7"/>
+    <rect x="48" y="30" width="14" height="8" rx="3" fill="#ff6b6b"/><rect x="51" y="26" width="8" height="16" rx="3" fill="#ff6b6b"/>
+    <circle cx="128" cy="86" r="34" fill="#8d5a3b"/><circle cx="128" cy="86" r="28" fill="#fff6e6"/>
+    <circle cx="118" cy="82" r="4" fill="#233"/><circle cx="138" cy="82" r="4" fill="#233"/><path d="M120 94q8 7 16 0" stroke="#233" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M128 52q-4-22 18-28 2 18-18 28zM128 52q-16-14-8-30 12 10 8 30z" fill="#2fb872"/>
+  </svg>
+</header>
+
+<nav id="nav">
+  <button data-t="gambaran" class="on">📊 Gambaran</button>
+  <button data-t="alur">🧭 Alur &amp; RM</button>
+  <button data-t="kasus">🩹 Kasus Tersering</button>
+  <button data-t="obat">💊 Dosis</button>
+  <button data-t="gawat">🚨 Gawat &amp; Rujuk</button>
+  <button data-t="vaksin">💉 Rabies &amp; Tetanus</button>
+  <button data-t="edu">📝 Edukasi (EN)</button>
+  <button data-t="english">🗣️ English Kit</button>
+  <button data-t="cek">✅ Checklist</button>
+</nav>
+
+<main>
+
+<section id="gambaran" class="on">
+  <div class="card"><h2>Seperti apa jaga di sini?</h2>
+    <div class="mas"><svg viewBox="0 0 80 80"><circle cx="40" cy="44" r="32" fill="#8d5a3b"/><circle cx="40" cy="44" r="26" fill="#fff6e6"/><circle cx="30" cy="40" r="4" fill="#233"/><circle cx="50" cy="40" r="4" fill="#233"/><path d="M32 54q8 7 16 0" stroke="#233" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M40 14q-3-12 12-14 0 12-12 14z" fill="#2fb872"/></svg>
+    <div class="bubble">Klinik bersih, nyaman, adem. Pasien mayoritas bule, jadi semua dalam <b>bahasa Inggris</b>. Kamu menggantikan dokter biasa, jadi ikuti format RM yang sudah ada.</div></div>
+    <div class="grid" style="margin-top:12px">
+      <div class="stat s1"><b>Turis asing</b>mayoritas pasien</div>
+      <div class="stat s2"><b>24 jam</b>pasien bisa datang malam &amp; dini hari</div>
+      <div class="stat s3"><b>Inggris</b>bahasa konsultasi dan RM</div>
+      <div class="stat s4"><b>Rujuk dini</b>fasilitas terbatas</div>
+    </div>
+  </div>
+  <div class="card"><h2>🏝️ 4 kategori pasien</h2>
+    <ul>
+      <li><b>Turis Asing</b> (bule yang liburan): mayoritas besar kunjungan.</li>
+      <li><b>Expat (KITAS)</b>: WNA yang menetap di sekitar.</li>
+      <li><b>Lokal / WNI</b>: jarang, sesekali.</li>
+      <li><b>Pasien asuransi</b>: siapkan dokumen lengkap untuk klaim.</li>
+    </ul>
+    
+  </div>
+      <div class="card"><h2>🧠 6 hal terpenting</h2>
+    <ol class="steps">
+      <li><b>Identitas sama persis dengan paspor</b> (nama, tanggal lahir, nomor). Perawat memfoto paspor di awal.</li>
+      <li><b>Tanya alergi obat dulu.</b> Turis sering tidak tahu padanan nama obat Indonesia.</li>
+      <li><b>Luka dan gigitan hewan</b> = cek tetanus dan rabies setiap kali.</li>
+      <li><b>Demam</b> = pikirkan dengue dan tifoid, lalu tanyakan riwayat perjalanan.</li>
+      <li><b>Ruang emergensi kecil.</b> Stabilkan, lalu rujuk dini bila di luar kapasitas.</li>
+      <li><b>RM diketik sendiri</b> dalam bahasa Inggris dengan diagnosis ICD-10 (icd.who.int).</li>
+    </ol>
+  </div>
+</section>
+
+<section id="alur">
+    <div class="card"><h2>🧭 Alur pasien</h2>
+    <ol class="steps">
+      <li><b>Perawat menerima pasien:</b> cek identitas, keluhan awal, TTV, foto paspor (dipakai untuk menulis RM).</li>
+      <li><b>Pemeriksaan awal:</b> TTV dicatat (GCS, TD, nadi, RR, suhu, SpO2, BB, TB) beserta keluhan awal.</li>
+      <li><b>Masuk ruang dokter:</b> anamnesis, periksa, konsultasi, tentukan perlu lab atau tindakan.</li>
+      <li><b>Tulis resep</b> lalu berikan ke perawat untuk disiapkan. Tindakan (infus, injeksi, jahit) dilakukan di ruang emergensi.</li>
+      <li><b>Ketik Medical Record</b> di sistem (format sudah tersedia, ikuti saja).</li>
+      <li><b>Administrasi:</b> pembayaran dan dokumen sesuai arahan klinik.</li>
+    </ol>
+  </div>
+    <div class="card"><h2>📋 Urutan isian Medical Record</h2>
+    <ol class="steps">
+      <li><b>Patient &amp; Pre-Examination Data</b> (terisi otomatis dari perawat): nama, no. RM, antrian, keluhan, GCS, TD, nadi, RR, suhu, SpO2, BB, TB.</li>
+      <li><b>Medical History:</b> Main Complaint*, Recent Illness (HPI), Allergy, Past Medical History, Regular Medication, Current Medication.</li>
+      <li><b>Examination:</b> Physical Examination* (status generalis dan lokalis), Supportive Investigation (lab/radiologi).</li>
+      <li><b>Diagnosis:</b> ICD Code*, Working Diagnosis*, Final Diagnosis*.</li>
+      <li><b>Treatment &amp; Services:</b> layanan/tindakan dan resep.</li>
+      <li><b>Recommendations:</b> Doctor Recommendation (KIE: boleh dan tidak boleh) dan Transport Recommendation (rujuk bila perlu).</li>
+      
+    </ol>
+    <div class="warn">Karena kamu menggantikan dokter lain, ikuti arahan klinik soal nama dokter yang dicantumkan di RM, dan pastikan jelas siapa yang memeriksa.</div>
+  </div>
+  <div class="card"><h2>✍️ Contoh isi RM (English, ringkas)</h2>
+    <div class="hand"><button class="copy" data-t="rm1">Copy</button>
+<pre id="rm1">Main complaint: Watery diarrhea and vomiting since yesterday.
+HPI: 28 y/o male tourist, 8 episodes watery stool, no blood, 3 episodes vomiting, abdominal cramps, subjective fever. Ate street food 2 days ago. Tolerating small sips.
+Allergy: No known drug allergy.
+PMH: None. Regular/current medication: None.
+PE: GCS 15, BP 110/70, HR 98, RR 20, T 37.8, SpO2 98%. Appears mildly dehydrated, dry mucosa, skin turgor slightly reduced. Abdomen: soft, diffuse mild tenderness, hyperactive bowel sounds, no guarding.
+Supportive: Stool analysis: pending.
+Diagnosis (ICD-10): A09 Infectious gastroenteritis and colitis.
+Treatment: IV Ringer Lactate 500 mL, ondansetron 4 mg IV, oral rehydration, probiotic.
+Recommendation: Drink ORS after each loose stool, small frequent meals (BRAT), avoid alcohol/dairy/spicy food. Return if blood in stool, fever &gt; 39, unable to keep fluids, no urine for 8 h, dizziness.</pre></div>
+  </div>
+</section>
+
+<section id="kasus">
+      <div class="card"><h2>🔎 Kasus yang paling sering</h2>
+    <div class="grid" id="cases"></div>
+  </div>
+  <div class="card"><h2>🏷️ Kode ICD-10 yang sering dipakai</h2>
+    <p><span class="pill">A09 Gastroenteritis</span><span class="pill">A01.0 Demam tifoid</span><span class="pill">A90 Dengue</span><span class="pill">A91 DHF</span><span class="pill">B50-B54 Malaria</span><span class="pill">R50.9 Demam</span><span class="pill">J06.9 ISPA</span><span class="pill">J02.9 Faringitis</span><span class="pill">J03.9 Tonsilitis</span><span class="pill">H60.x Otitis eksterna</span><span class="pill">H66.9 Otitis media</span><span class="pill">N39.0 ISK</span><span class="pill">L08.9 Infeksi kulit lokal</span><span class="pill">T14.1 Luka terbuka</span><span class="pill">S61.0 Luka jari</span><span class="pill">T00.x Cedera superfisial multipel</span><span class="pill">Z20.3 Kontak/paparan rabies</span><span class="pill">Z24.2 Imunisasi rabies</span><span class="pill">Z23 Imunisasi (tetanus)</span><span class="pill">T63.x Kontak hewan berbisa/laut</span><span class="pill">T78.2/T78.4 Alergi</span><span class="pill">K29.7 Gastritis</span><span class="pill">M54.5 LBP</span></p>
+    <div class="warn">Kode di atas adalah pengingat. Cek kode final di icd.who.int sebelum menyimpan RM.</div>
+  </div>
+</section>
+
+<section id="obat">
+  <div class="card"><h2>📏 Dosis dewasa (referensi cepat)</h2>
+    <div class="warn">Pengingat umum. Verifikasi dengan kemasan dan kondisi pasien (berat badan, ginjal/hati, hamil, alergi, interaksi) dan formularium klinik. Bukan pengganti penilaian klinis.</div>
+    <div class="wrap"><table><thead><tr><th>Obat</th><th>Dewasa umum</th></tr></thead><tbody id="dose"></tbody></table></div>
+  </div>
+  <div class="card"><h2>⚠️ Cek ketersediaan saat handover</h2>
+    <p>Pastikan ada di klinik sebelum butuh:</p>
+    <p><span class="pill">Adrenalin/epinefrin</span><span class="pill">Diazepam/midazolam</span><span class="pill">Dextrose 40%</span><span class="pill">Aspirin/clopidogrel</span><span class="pill">Nitrat</span><span class="pill">Furosemide injeksi</span><span class="pill">Hydrocortisone/dexamethasone inj</span><span class="pill">Atropin</span><span class="pill">Salbutamol nebul</span><span class="pill">Oksigen &amp; suction</span><span class="pill">Vaksin &amp; imunoglobulin rabies</span><span class="pill">Tetanus vaksin &amp; TIG</span></p>
+  </div>
+</section>
+
+<section id="gawat">
+  <div class="card"><h2>🚨 Prinsip: stabilkan, lalu rujuk dini</h2>
+    <p>Klinik wisata kecil umumnya tanpa rawat inap panjang atau ICU. Keputusan rujuk jangan ditunda.</p>
+    <ol class="steps">
+      <li><b>ABCDE</b> dan TTV lengkap (termasuk gula darah). Pasang IV line.</li>
+      <li><b>Tentukan tujuan rujukan:</b> RS terdekat di area Mandalika atau RS yang lebih lengkap di Mataram, sesuai kondisi pasien.</li>
+      <li><b>Telepon DPJP/IGD tujuan</b>, sampaikan ringkas (SBAR).</li>
+      <li><b>Isi Transport Recommendation</b> di RM, jelaskan ke pasien (dan asuransi) dalam bahasa Inggris, dokumentasikan bila menolak (informed refusal).</li>
+    </ol>
+    <div class="tip">Konfirmasi nomor telepon RS dan ambulans saat handover; pastikan informasi RS rujukan masih berlaku.</div>
+  </div>
+  <div class="card"><h2>🧰 Protokol gawat darurat (pengingat dewasa)</h2>
+    <details open><summary>Anafilaksis</summary>
+      <p>Epinefrin 0,5 mg IM (1:1000) paha lateral, ulang tiap 5–15 menit. Baringkan kaki ditinggikan, oksigen, infus cepat NaCl/RL. Tambahan: diphenhydramine inj, metilprednisolon/dexamethasone, salbutamol nebul untuk bronkospasme. Observasi minimal 6 jam, rujuk bila berat.</p></details>
+    <details><summary>Nyeri dada / ACS</summary>
+      <p>ECG 12 sadapan dalam 10 menit, oksigen bila SpO2 &lt;94%, aspirin 160–320 mg kunyah bila tidak ada kontraindikasi, nitrat SL bila TD cukup. Rujuk segera ke RS dengan fasilitas jantung (Mataram).</p></details>
+    <details><summary>Asma / sesak</summary>
+      <p>Nebulizer salbutamol, oksigen, steroid (dexamethasone inj atau metilprednisolon). Rujuk bila SpO2 turun, tidak bisa bicara satu kalimat, atau tidak membaik.</p></details>
+    <details><summary>Kejang</summary>
+      <p>Lindungi jalan napas, posisi miring, cek gula darah. Diazepam IV/rektal bila &gt;5 menit (sesuai ketersediaan). Pikirkan hipoglikemia, hiponatremia, infeksi, putus alkohol, trauma kepala. Rujuk bila kejang pertama atau berulang.</p></details>
+    <details><summary>Hipoglikemia</summary>
+      <p>Sadar: gula oral. Tidak sadar: dextrose 40% IV (sesuai ketersediaan) lalu infus dextrose. Cari penyebab (obat DM, alkohol, sepsis).</p></details>
+    <details><summary>Dehidrasi berat / gastroenteritis</summary>
+      <p>RL bolus, ondansetron inj, cek elektrolit (tersedia). Ukur nadi, TD, urin. Rujuk bila syok, gagal ginjal, atau tidak bisa minum setelah terapi.</p></details>
+    <details><summary>Kecelakaan motor (KLL)</summary>
+      <p>Primary survey ABCDE, pikirkan cedera kepala, tulang belakang (pasang neck collar), toraks, abdomen, fraktur. Bidai dan fiksasi fraktur, luka cuci-jahit, tetanus. Rujuk bila curiga fraktur atau cedera organ yang butuh pencitraan. Red flag kepala: GCS turun, muntah berulang, kejang, tanda fraktur basis.</p></details>
+    <details><summary>Dengue dengan warning signs</summary>
+      <p>Nyeri perut hebat, muntah persisten, perdarahan mukosa, letargi, trombosit turun cepat dengan hematokrit naik, akral dingin. Pasang IV, kristaloid sesuai protokol, rujuk. Hindari NSAID, pakai paracetamol.</p></details>
+    <details><summary>Dugaan keracunan metanol (arak/alkohol lokal)</summary>
+      <p>Gejala visual, asidosis, nyeri perut setelah minum alkohol. Ini kegawatan: rujuk segera ke RS dengan kemampuan antidot (fomepizole atau etanol) dan dialisis. Jangan menunggu hasil lab.</p></details>
+    <details><summary>Sengatan ubur-ubur / bulu babi / karang</summary>
+      <p>Bulu babi: cabut duri (ada layanan), rendam air hangat, antiseptik, tetanus. Ubur-ubur: bilas cuka (kotak), cabut tentakel, air panas 40–45°C 20 menit. Waspadai infeksi dan reaksi alergi.</p></details>
+    <details><summary>Heat illness</summary>
+      <p>Heat exhaustion: istirahat, cairan, pendinginan. Heat stroke (kesadaran turun, suhu &gt;40°C): pendinginan agresif, IV cairan, rujuk.</p></details>
+    <details><summary>DCS / tenggelam</summary>
+      <p>Tenggelam: ABC, oksigen tinggi, observasi, rujuk meskipun tampak baik. Nyeri sendi/neurologis setelah menyelam: oksigen 100%, rujuk ke fasilitas hiperbarik (Bali), jangan terbang.</p></details>
+  </div>
+</section>
+
+<section id="vaksin">
+  <div class="card"><h2>🐒 Gigitan hewan / rabies</h2>
+    <div class="mas"><svg viewBox="0 0 80 80"><circle cx="40" cy="44" r="32" fill="#8d5a3b"/><circle cx="40" cy="44" r="26" fill="#fff6e6"/><circle cx="30" cy="40" r="4" fill="#233"/><circle cx="50" cy="40" r="4" fill="#233"/><path d="M32 54q8 7 16 0" stroke="#233" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+    <div class="bubble">Diagnosis "cat bite wound" dan "rabies immunization" masuk 10 besar sepanjang waktu. Ini sering sekali di sini.</div></div>
+    <ol class="steps">
+      <li><b>Cuci luka</b> dengan sabun dan air mengalir 15 menit, lalu povidone iodine.</li>
+      <li><b>Nilai kategori WHO:</b> I (menyentuh/menjilat kulit utuh: tidak perlu PEP), II (gigitan kecil tanpa darah: vaksin), III (luka tembus/darah, jilatan di mukosa/luka: vaksin + RIG).</li>
+      <li><b>Vaksin (IM):</b> hari 0, 3, 7, 14 (atau ID dua titik hari 0, 3, 7 bila teknik dan stok sesuai). Kategori III: Rabies Immune Globulin (RIG) infiltrasi sekitar luka secepatnya.</li>
+      <li><b>Jadwalkan dosis lanjutan</b> dan berikan tanggal ke pasien. Turis harus meneruskan di negaranya bila pulang.</li>
+      <li><b>Tetanus</b> sesuai riwayat (lihat bawah). Pertimbangkan antibiotik profilaksis (amoxicillin-clavulanate) untuk luka gigitan.</li>
+    </ol>
+    <div class="warn">Anggap setiap gigitan hewan mamalia (anjing, kucing, monyet) sebagai paparan potensial, kecuali konfirmasi resmi Dinkes menyatakan area bebas rabies. Status rabies Lombok perlu dikonfirmasi ke dinas setempat.</div>
+      </div>
+  <div class="card"><h2>💉 Tetanus</h2>
+    <div class="wrap"><table><thead><tr><th>Riwayat imunisasi</th><th>Luka bersih kecil</th><th>Luka kotor/berat</th></tr></thead><tbody>
+      <tr><td>Tidak tahu / &lt;3 dosis</td><td>Vaksin Td/TT, lanjutkan seri</td><td>Vaksin + TIG (Tetagam) di tempat berbeda</td></tr>
+      <tr><td>≥3 dosis, terakhir &lt;5 tahun</td><td>Tidak perlu</td><td>Tidak perlu</td></tr>
+      <tr><td>≥3 dosis, terakhir 5–10 tahun</td><td>Tidak perlu</td><td>Booster</td></tr>
+      <tr><td>≥3 dosis, terakhir &gt;10 tahun</td><td>Booster</td><td>Booster</td></tr>
+    </tbody></table></div>
+    <div class="tip">Turis sering tidak ingat vaksin terakhir. Tanya "Do you remember your last tetanus shot?" dan "Did you receive childhood vaccines?". Bila ragu, anggap tidak lengkap pada luka kotor.</div>
+  </div>
+</section>
+
+<section id="edu">
+  <div class="card"><h2>📝 Handout edukasi pasien (English)</h2>
+    <p>Siap salin ke bagian <b>Recommendation</b> di RM atau diberikan lisan. Tiap handout berisi return precautions.</p>
+    <div id="handouts"></div>
+  </div>
+</section>
+
+<section id="english">
+  <div class="card"><h2>🗣️ Kalimat English cepat</h2>
+    <h3>Anamnesis</h3>
+    <div class="ph"><b>What brings you in today?</b> When did it start? Is it getting better or worse?</div>
+    <div class="ph"><b>Any allergies to medication?</b> Penicillin? Ibuprofen or aspirin?</div>
+    <div class="ph"><b>Do you take any regular medication or blood thinners?</b></div>
+    <div class="ph"><b>Rate your pain from 0 to 10.</b> Where exactly? Does it spread anywhere?</div>
+    <div class="ph"><b>Fever, vomiting, diarrhea? Any blood in the stool?</b> How many times today?</div>
+    <div class="ph"><b>What have you eaten or drunk in the last two days?</b> Any alcohol (including local arak)?</div>
+    <div class="ph"><b>Where have you travelled recently?</b> Any mosquito bites? Any contact with animals?</div>
+    <div class="ph"><b>Could you be pregnant?</b> When was your last period?</div>
+    <h3>Pemeriksaan</h3>
+    <div class="ph"><b>I'm going to examine your tummy / ears / throat. Tell me if it hurts.</b></div>
+    <div class="ph"><b>Please lie down and bend your knees.</b></div>
+    <div class="ph"><b>I need to clean the wound and numb the area first. You may feel a small pinch.</b></div>
+    <h3>Rencana &amp; penjelasan</h3>
+    <div class="ph"><b>I'd like to do a quick blood test for dengue and typhoid.</b></div>
+    <div class="ph"><b>You are a bit dehydrated. I recommend a drip, it takes about one hour.</b></div>
+    <div class="ph"><b>Take this twice a day after meals for five days. Finish the whole course.</b></div>
+    <div class="ph"><b>Please avoid alcohol while taking this medicine.</b></div>
+    <div class="ph"><b>Come back immediately if the fever persists, you cannot keep fluids down, or you feel worse.</b></div>
+    <div class="ph"><b>I recommend you go to the hospital. We will arrange transport.</b></div>
+    <div class="ph"><b>I can print a medical report and receipt for your travel insurance.</b></div>
+    <h3>Slang pasien yang sering muncul</h3>
+    <div class="ph"><b>"Delhi belly" / "Bali belly"</b> = traveler's diarrhea. <b>"Gnarly"</b> = parah. <b>"Wiped out"</b> = lemas. <b>"Grazed"</b> = lecet/abrasi. <b>"Sting / sea lice"</b> = sengatan laut/gatal pantai. <b>"Reef cut"</b> = luka karang. <b>"Heat rash"</b> = biang keringat.</div>
+  </div>
+  <div class="card"><h2>📄 Surat dan dokumen</h2>
+    <p>Dokumen yang sering diminta: <b>sick leave</b>, <b>fit to fly</b>, medical report untuk asuransi.</p>
+    <div class="warn">Surat fit/unfit-to-fly dan sick leave harus berdasarkan temuan klinis nyata dan ditandatangani oleh dokter yang memeriksa. Asuransi sering memverifikasi ke klinik.</div>
+  </div>
+</section>
+
+<section id="cek">
+  <div class="card"><h2>✅ Checklist</h2>
+    <h3>Sebelum shift</h3>
+    <ul id="cl1" style="list-style:none;padding:0"></ul>
+    <h3>Saat memeriksa</h3>
+    <ul id="cl2" style="list-style:none;padding:0"></ul>
+    <h3>Sebelum pulang</h3>
+    <ul id="cl3" style="list-style:none;padding:0"></ul>
+  </div>
+</section>
+
+</main>
+<footer>Disusun untuk dr. Haldy Dwi Febrian. Tanpa data pasien, tarif, harga, atau data internal klinik.<br>Dosis dan protokol adalah pengingat umum, verifikasi dengan kondisi pasien dan ketersediaan di klinik.</footer>
+
+<script>
+const navBtns=document.querySelectorAll('#nav button');
+function show(id){document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===id));navBtns.forEach(b=>b.classList.toggle('on',b.dataset.t===id));window.scrollTo({top:0})}
+navBtns.forEach(b=>b.onclick=()=>show(b.dataset.t));
+
+function barRows(el,data,max){document.getElementById(el).innerHTML=data.map(d=>`<div class="row"><span>${d[0]}</span><div class="bar" style="width:${Math.max(3,d[1]/max*100)}%"></div><b>${d[2]||('±'+d[1])}</b></div>`).join('')}
+
+// cases
+const CASES=[
+['🤢 Diare / gastroenteritis (A09)','Kasus nomor satu. Anamnesis makanan, darah/lendir, demam, dehidrasi. Terapi: rehidrasi (ORS/RL), ondansetron, probiotik, attapulgit/zinc, hyoscine bila kram. Antibiotik hanya bila disentri/demam tinggi/berdarah. Feses lengkap tersedia.'],
+['🤒 Demam (R50.9, A01.0, A90)','Pikirkan dengue (NS1 hari 1–5, IgG/IgM setelahnya), tifoid (Widal, IgG/IgM salmonella), malaria (tes tersedia), ISK, infeksi virus. FBC hampir selalu diminta. Waspadai warning sign dengue.'],
+['🏍️ KLL / trauma','Luka lecet-robek, fraktur, cedera kepala. Cuci-jahit (lidocaine, benang), tetanus, neck collar, bidai, rujuk bila perlu pencitraan.'],
+['🦔 Luka laut (bulu babi, karang)','Cabut duri, bersihkan, antibiotik bila luka terinfeksi, tetanus. Luka karang mudah infeksi: gentamicin/fusidic acid topikal, follow-up.'],
+['🐈 Gigitan hewan','Kucing, anjing, monyet. Cuci 15 menit, PEP rabies sesuai kategori, tetanus, antibiotik profilaksis. Lihat tab Rabies &amp; Tetanus.'],
+['👂 THT','Otitis eksterna ("swimmer\'s ear"), otitis media, serumen. Tetes telinga (Otopain, ofloxacin tidak ada, chloramphenicol, Forumen), irigasi telinga tersedia.'],
+['🤧 ISPA / faringitis','Paracetamol, antihistamin, ambroxol, FG Troches. Antibiotik bila kriteria bakteri.'],
+['🚽 ISK (N39.0)','Nyeri berkemih, demam, nyeri pinggang. Urin lengkap tersedia, kultur urin tersedia. Pikirkan pielonefritis bila CVA nyeri.'],
+['🧴 Kulit','Infeksi kulit (L08.9), sunburn, skabies (permethrin), jamur (ketoconazole, miconazole), herpes (acyclovir), alergi (cetirizine, steroid topikal).'],
+['🦟 Penyakit tropis lain','Dengue, tifoid, malaria, leptospirosis (banjir), rabies. Tanyakan riwayat perjalanan ke Rinjani, Gili, Sumbawa.'],
+['🔥 Luka bakar ringan','Sulfadiazine silver, Bioplacenton, dressing; analgesik; tetanus.'],
+['🧪 IMS / kesehatan seksual','Tes IMS (HIV, sifilis, gonorrhea, klamidia, trikomonas) sesuai ketersediaan. Jaga privasi dan non-judgmental.'],
+
+['🌡️ Heat/dehidrasi/mabuk perjalanan','Banyak turis kelelahan dan dehidrasi. Rehidrasi sering diperlukan.']
+];
+document.getElementById('cases').innerHTML=CASES.map(c=>`<div class="card" style="margin:0"><h3>${c[0]}</h3><p style="margin:0;font-size:14px">${c[1]}</p></div>`).join('');
+
+const DOSE=[
+['Paracetamol','500–1000 mg tiap 6–8 jam, maks 3–4 g/hari. Infus 1 g tiap 6 jam bila tidak bisa oral.'],
+['Ibuprofen','400 mg tiap 8 jam sesudah makan. Hindari pada dengue dan dehidrasi.'],
+['Metamizole','500 mg tiap 8 jam (oral) atau IV pelan.'],
+['Ketorolac','10–30 mg IV/IM, maks 5 hari. Hati-hati ginjal, lambung, dehidrasi.'],
+['Omeprazole','20–40 mg sekali sehari sebelum makan. Inj 40 mg IV tiap 12–24 jam.'],
+['Ondansetron','4 mg IV/oral tiap 8 jam.'],
+['Metoclopramide / Domperidone','10 mg tiap 8 jam, jangka pendek.'],
+['Hyoscine butylbromide','10–20 mg tiap 6–8 jam untuk kram perut.'],
+['Attapulgit','Sesuai label, setelah tiap BAB cair, maks 24 jam bila tidak membaik.'],
+['Loperamide','Hindari pada diare berdarah atau demam tinggi.'],
+['Amoxicillin-clavulanate','625 mg tiap 8 jam (atau 875/125 tiap 12 jam) 5–7 hari.'],
+['Azithromycin','500 mg sekali sehari 3 hari (traveler\'s diarrhea berat: 500 mg dosis tunggal atau 3 hari).'],
+['Cefixime','200 mg tiap 12 jam.'],
+['Cefadroxil','500 mg tiap 12 jam.'],
+['Ciprofloxacin','500 mg tiap 12 jam. Hindari pada anak, hamil; waspadai tendinopati pada pasien aktif.'],
+['Doxycycline','100 mg tiap 12 jam. Hindari hamil, anak &lt;8 tahun.'],
+['Metronidazole','500 mg tiap 8 jam. Larang alkohol.'],
+['Ceftriaxone','1–2 g IV/IM sekali sehari.'],
+['Dexamethasone','0,5–1 mg oral; 4–8 mg IV/IM untuk reaksi alergi sedang-berat.'],
+['Cetirizine / Loratadine','10 mg sekali sehari.'],
+['Salbutamol','Nebul 2,5 mg sesuai label atau 2–4 mg oral.'],
+['Adrenalin (anafilaksis)','0,5 mg IM (1:1000).']
+];
+document.getElementById('dose').innerHTML=DOSE.map(d=>`<tr><td><b>${d[0]}</b></td><td>${d[1]}</td></tr>`).join('');
+
+// handouts
+const H=[
+['Diarrhea / vomiting (gastroenteritis)',`You have gastroenteritis (stomach infection), usually from food or water.
+- Drink ORS or clean water in small sips after every loose stool.
+- Eat small, simple meals (rice, banana, toast). Avoid alcohol, dairy, spicy and oily food for 2-3 days.
+- Take the medicines as prescribed. Wash your hands often.
+Come back / go to the ER if: blood in stool, fever above 39 C, vomiting more than 24 hours or you cannot keep fluids down, very little urine for 8 hours, dizziness or confusion, severe belly pain.`],
+['Fever (possible dengue / typhoid)',`Your fever may be a viral infection, dengue or typhoid. We will watch for warning signs.
+- Rest and drink plenty of fluids (2-3 litres a day).
+- Use paracetamol for fever. Do NOT take ibuprofen or aspirin until dengue is ruled out.
+- Use mosquito repellent and a net.
+Come back / go to the ER immediately if: severe belly pain, repeated vomiting, bleeding (gums, nose, black stool), very sleepy or restless, cold hands and feet, difficulty breathing, fever not improving after 3 days.`],
+['Wound care and tetanus',`Your wound has been cleaned and treated.
+- Keep it clean and dry for 24 hours, then change the dressing daily.
+- Do not swim in the sea or pool until it has healed (sea wounds get infected easily).
+- Take antibiotics only if prescribed. Stitches usually come out after 7-10 days (face 5 days).
+Come back / go to the ER if: increasing redness, swelling, pus, bad smell, red streaks, fever, severe pain, numbness, or jaw stiffness/muscle spasms.`],
+['Sea urchin / coral injury',`Spines or coral can stay under the skin and cause infection.
+- Soak the area in hot (not scalding) water for 20-30 minutes for pain.
+- We removed visible spines. Small deep ones may dissolve or work out in a few weeks.
+- Keep it clean, apply the ointment, avoid the sea until healed.
+Come back if: increasing pain, swelling, redness, pus, fever, stiff joint nearby.`],
+['Animal bite / rabies prevention',`Any bite or scratch from a dog, cat or monkey can carry rabies.
+- Wash the wound with soap and running water for 15 minutes (already done here).
+- You need a course of rabies vaccine (day 0, 3, 7, 14) and sometimes rabies immunoglobulin. Please finish the whole course, even if you travel home.
+- Rabies is almost always fatal once symptoms start, but fully preventable with timely vaccination.
+Come back / go to the ER if: the wound looks infected, fever, tingling at the bite, or if you cannot attend your next dose.`],
+["Ear infection (swimmer's ear)",`- Keep your ear dry: no swimming or surfing until better, use earplugs in the shower.
+- Use ear drops as instructed. Do not put cotton buds in the ear.
+- Paracetamol for pain.
+Come back if: fever, swelling behind the ear, severe pain, dizziness, hearing loss, or no improvement after 3 days.`],
+['Sore throat / cold (URTI)',`Most colds and sore throats are viral and settle in 5-7 days.
+- Rest, fluids, honey/lemon drinks, throat lozenges.
+- Paracetamol for fever and pain.
+- Antibiotics are only needed for some throat infections.
+Come back if: trouble breathing or swallowing, fever above 39 C for more than 3 days, severe headache or neck stiffness.`],
+['Urinary tract infection',`- Drink plenty of water, do not hold urine.
+- Take the antibiotic exactly as prescribed even if you feel better.
+Come back / go to the ER if: fever, shaking chills, back/flank pain, vomiting, blood in urine, or no improvement in 48 hours.`],
+['Minor head injury / motorbike accident',`- Someone should stay with you for the next 24 hours.
+- Rest, light meals, paracetamol for pain. No alcohol.
+- Always wear a helmet. Avoid driving for 24 hours.
+Go to the ER immediately if: repeated vomiting, worsening headache, confusion or drowsiness, seizure, weakness or numbness, clear fluid from nose/ears, one pupil bigger than the other.`],
+['Sunburn / heat illness',`- Cool showers, aloe vera or soothing cream, drink plenty of water and electrolytes.
+- Paracetamol or ibuprofen for pain. Cover up, stay in shade.
+Go to the ER if: confusion, fainting, very high temperature, no sweating, blistering over a large area.`]
+];
+document.getElementById('handouts').innerHTML=H.map((h,i)=>`<div class="hand"><button class="copy" data-t="h${i}">Copy</button><h3>${h[0]}</h3><pre id="h${i}">${h[1]}</pre></div>`).join('');
+
+document.querySelectorAll('button.copy').forEach(b=>{const label=b.textContent;b.addEventListener('click',()=>{const t=document.getElementById(b.dataset.t).innerText;function done(m){b.textContent=m;setTimeout(()=>b.textContent=label,1800)}try{navigator.clipboard.writeText(t).then(()=>done('Copied ✓'),()=>done('Select & copy manual'))}catch(e){done('Select & copy manual')}})});
+
+// checklists
+const CL=[
+['cl1',['Kenalan dengan perawat yang bertugas dan tanya alur klinik hari itu','Cek nama dokter yang digantikan dan cara pencantumannya di RM (konfirmasi aturan klinik)','Cek troli emergensi: adrenalin, diazepam, dextrose, oksigen, suction, ECG','Cek stok obat yang sering dipakai (cairan infus, antiemetik, antibiotik oral, probiotik, obat luka)','Tanyakan nomor telepon RS rujukan (Mandalika/Mataram) dan ambulans','Tanyakan pasien yang masih diobservasi atau hasil lab yang menunggu']],
+['cl2',['Identitas sesuai paspor','Alergi obat ditanyakan','Kehamilan ditanyakan pada perempuan usia subur','Riwayat perjalanan dan gigitan hewan ditanyakan (bila demam/luka)','Lab dipakai bila perlu (FBC, NS1, Widal, malaria, urin, feses)','Luka: tetanus dan rabies dipertimbangkan']],
+['cl3',['RM lengkap: history, alergi, PMH, PE (TTV, generalis, lokalis), lab, diagnosis ICD-10','Layanan dan obat sudah dicatat sesuai prosedur klinik','Recommendation (KIE) dan return precautions dijelaskan dalam bahasa Inggris','Dokumen (sick leave, fit to fly, medical report asuransi) bila diminta dan sesuai temuan','Serah terima: pasien observasi, hasil menunggu, rencana rujuk, dosis vaksin lanjutan']]
+];
+CL.forEach(([id,items])=>{const ul=document.getElementById(id);let saved=[];try{saved=JSON.parse(localStorage.getItem(id)||'[]')}catch(e){}
+ul.innerHTML=items.map((t,i)=>`<li class="card" style="margin:6px 0;padding:10px 14px"><label style="cursor:pointer;display:flex;gap:10px;align-items:flex-start"><input type="checkbox" style="width:20px;height:20px;margin-top:3px" ${saved[i]?'checked':''}> <span>${t}</span></label></li>`).join('');
+ul.addEventListener('change',()=>{const st=[...ul.querySelectorAll('input')].map(c=>c.checked);try{localStorage.setItem(id,JSON.stringify(st))}catch(e){}})});
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{})})}
+</script>
+</body>
+</html>
